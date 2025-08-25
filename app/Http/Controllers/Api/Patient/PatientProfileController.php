@@ -82,6 +82,7 @@ class PatientProfileController extends Controller
             'date_of_birth'   => $validated['date_of_birth'],
             'gender'          => $validated['gender'],
             'phone_number'    => $validated['phone_number'],
+            'height_cm'       => $validated['height_cm'] ?? null,
             'height_feet'     => $validated['height_feet'] ?? null,
             'height_inches'   => $validated['height_inches'] ?? null,
             'weight_lbs'      => $validated['weight_lbs'] ?? null,
