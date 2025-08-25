@@ -52,11 +52,9 @@ Route::middleware(['auth', 'verified', 'role:admin'])->prefix('admin')->name('ad
   *
   * */
 
-Route::get('/patients',function () { return view('admin.patient.index'); })->name('patients');
-
-
-Route::get('/add-patient',function () { return view('admin.patient.add'); })->name('patient.add');
-Route::post('/patient/create',[PatientController::class, 'register'])->name('patient.create');
+Route::get('/patients',[PatientController::class, 'index'])->name('patients');
+Route::get('/add-patient',[PatientController::class, 'create'])->name('patient.add');
+Route::post('/patient/create',[PatientController::class, 'store'])->name('patient.create');
 // Route::get('/patient/{id}/edit', [PatientController::class, 'edit'])->name('patient.edit');
 // Route::put('/patient/{id}', [PatientController::class, 'update'])->name('patient.update');
 

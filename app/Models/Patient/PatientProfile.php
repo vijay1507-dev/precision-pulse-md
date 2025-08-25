@@ -20,6 +20,8 @@ class PatientProfile extends Model
             'gender',
             'phone_number',
             'height_cm',
+            'height_feet',
+            'height_inches',
             'weight_lbs',
             'profile_image',
             'age',
@@ -38,6 +40,37 @@ class PatientProfile extends Model
             return $this->date_of_birth
                 ? Carbon::parse($this->date_of_birth)->age
                 : null;
+        }
+
+        /**
+         * Calculate height in centimeters from feet and inches.
+         */
+        public function getHeightInCmAttribute()
+        {
+            if ($this->height_feet || $this->height_inches) {
+                $feet = (int) $this->height_feet;
+                $inches = (float) $this->height_inches;
+                $totalInches = ($feet * 12) + $inches;
+                return round($totalInches * 2.54, 1); // Convert to centimeters
+            }
+            
+            return $this->height_cm;
+        }
+
+        /**
+         * Get formatted height display.
+         */
+        public function getFormattedHeightAttribute()
+        {
+            if ($this->height_feet || $this->height_inches) {
+                return $this->height_feet . "'" . (int)($this->height_inches * 12) . '"';
+            }
+            
+            if ($this->height_cm) {
+                return $this->height_cm . ' cm';
+            }
+            
+            return 'Not specified';
         }
 
 
@@ -74,6 +107,8 @@ class PatientProfile extends Model
                     'gender',
                     'phone_number',
                     'height_cm',
+                    'height_feet',
+                    'height_inches',
                     'weight_lbs',
                     'profile_image',
                 ])

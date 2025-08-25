@@ -82,15 +82,47 @@
                   <x-input-error :messages="$message" class="mt-2" />
                 @enderror
               </div>
+              
               <div class="col-12 col-md-4 col-sm-6">
                 <input type="tel" name="phone_number" class="form-control mb-3 rounded-30" placeholder="+1 (123) 456-7890">
                  @error('phone_number')
                   <x-input-error :messages="$message" class="mt-2" />
                 @enderror
               </div>
-              <div class="col-12 col-md-4 col-sm-6">
-                <input type="number" name="height_cm" value="{{ old('height_cm')}}" placeholder="Height(eg.6.1)" class="form-control mb-3 rounded-30">
-                @error('height_cm')
+                            <div class="col-12 col-md-4 col-sm-6">
+                <div class="d-flex gap-0 height_profile" bis_skin_checked="1">
+                  <select id="heightFeet" name="height_feet" class="w-50 form-select">
+                    <option value="">Feet</option>
+                    <option value="1" {{ old('height_feet') == '1' ? 'selected' : '' }}>1</option>
+                    <option value="2" {{ old('height_feet') == '2' ? 'selected' : '' }}>2</option>
+                    <option value="3" {{ old('height_feet') == '3' ? 'selected' : '' }}>3</option>
+                    <option value="4" {{ old('height_feet') == '4' ? 'selected' : '' }}>4</option>
+                    <option value="5" {{ old('height_feet') == '5' ? 'selected' : '' }}>5</option>
+                    <option value="6" {{ old('height_feet') == '6' ? 'selected' : '' }}>6</option>
+                    <option value="7" {{ old('height_feet') == '7' ? 'selected' : '' }}>7</option>
+                    <option value="8" {{ old('height_feet') == '8' ? 'selected' : '' }}>8</option>
+                    <option value="9" {{ old('height_feet') == '9' ? 'selected' : '' }}>9</option>
+                  </select>
+                  <select id="heightInches" name="height_inches" class="w-50 form-select">
+                    <option value="">Inches</option>
+                    <option value="0.0" {{ old('height_inches') == '0.0' ? 'selected' : '' }}>0</option>
+                    <option value="0.1" {{ old('height_inches') == '0.1' ? 'selected' : '' }}>1</option>
+                    <option value="0.2" {{ old('height_inches') == '0.2' ? 'selected' : '' }}>2</option>
+                    <option value="0.3" {{ old('height_inches') == '0.3' ? 'selected' : '' }}>3</option>
+                    <option value="0.4" {{ old('height_inches') == '0.4' ? 'selected' : '' }}>4</option>
+                    <option value="0.5" {{ old('height_inches') == '0.5' ? 'selected' : '' }}>5</option>
+                    <option value="0.6" {{ old('height_inches') == '0.6' ? 'selected' : '' }}>6</option>
+                    <option value="0.7" {{ old('height_inches') == '0.7' ? 'selected' : '' }}>7</option>
+                    <option value="0.8" {{ old('height_inches') == '0.8' ? 'selected' : '' }}>8</option>
+                    <option value="0.9" {{ old('height_inches') == '0.9' ? 'selected' : '' }}>9</option>
+                    <option value="1.0" {{ old('height_inches') == '1.0' ? 'selected' : '' }}>10</option>
+                    <option value="1.1" {{ old('height_inches') == '1.1' ? 'selected' : '' }}>11</option>
+                  </select>
+                </div>
+                @error('height_feet')
+                  <x-input-error :messages="$message" class="mt-2" />
+                @enderror
+                @error('height_inches')
                   <x-input-error :messages="$message" class="mt-2" />
                 @enderror
               </div>
@@ -103,7 +135,7 @@
           </div>
           <div class="w-100 d-block">
             <a class="btn btn-primary px-3 rounded-30 me-3" href="#">Cancel</a>
-            <button class="btn btn-outline-success px-3 rounded-30" type="submit">Register</button>
+            <button class="btn btn-outline-success px-3 rounded-30" type="submit">Submit</button>
           </div>
     </div>
   </form>
